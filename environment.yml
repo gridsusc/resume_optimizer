@@ -86,7 +86,6 @@ dependencies:
   - ptyprocess=0.7.0=pyhd3eb1b0_2
   - pure_eval=0.2.2=pyhd3eb1b0_0
   - pyasn1=0.6.1=pyhd8ed1ab_2
-  - pyasn1-modules=0.4.1=pyhd8ed1ab_1
   - pycparser=2.21=pyhd3eb1b0_0
   - pygments=2.15.1=py39hca03da5_1
   - pyopenssl=24.2.1=py39hca03da5_0
@@ -135,7 +134,7 @@ dependencies:
   - zipp=3.21.0=py39hca03da5_0
   - zlib=1.2.13=h18a0788_1
   - pip:
-      - accelerate==0.26.1
+      - accelerate==1.6.0
       - annotated-types==0.7.0
       - anyio==4.6.2.post1
       - asgiref==3.8.1
@@ -160,7 +159,7 @@ dependencies:
       - grpcio==1.68.0
       - h11==0.14.0
       - httptools==0.6.4
-      - huggingface-hub==0.23.0
+      - huggingface-hub==0.30.1
       - humanfriendly==10.0
       - importlib-resources==6.4.5
       - joblib==1.4.2
@@ -199,6 +198,7 @@ dependencies:
       - posthog==3.7.2
       - protobuf==5.28.3
       - pulsar-client==3.5.0
+      - pyasn1-modules==0.4.1
       - pydantic==2.9.2
       - pydantic-core==2.23.4
       - pymupdf==1.24.14
@@ -226,7 +226,7 @@ dependencies:
       - torch==2.5.1
       - torchvision==0.20.1
       - tqdm==4.67.0
-      - transformers==4.49.0
+      - transformers==4.51.0
       - typer==0.13.1
       - typing-inspect==0.9.0
       - uvicorn==0.32.0
