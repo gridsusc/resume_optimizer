@@ -1,0 +1,101 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+    "basics": {
+        "name": "Richard Hendriks",
+        "label": "",
+        "image": "",
+        "email": "richard.hendriks@mail.com",
+        "phone": "",
+        "url": "http://richardhendricks.example.com",
+        "summary": "Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinal!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a \u201clength-limited\u201d conversation!",
+        "location": {
+            "address": "",
+            "postalCode": "",
+            "city": "San Francisco",
+            "countryCode": "",
+            "region": "California"
+        },
+        "profiles": [
+            {
+                "network": "",
+                "username": "",
+                "url": ""
+            }
+        ]
+    },
+    "work": [
+        {
+            "name": "Pied Piper",
+            "location": "",
+            "description": "",
+            "position": "CEO/President",
+            "url": "",
+            "startDate": "Dec 2013",
+            "endDate": "Dec 2014",
+            "summary": "",
+            "highlights": [
+                "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
+                "Successfully won Techcrunch Disrupt",
+                "Optimized an algorithm that holds the current world record for Weisman Scores"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "institution": "University of Oklahoma",
+            "url": "",
+            "area": "Information Technology",
+            "studyType": "Bachelor",
+            "startDate": "Jun 2011",
+            "endDate": "Jan 2014",
+            "score": "4.0",
+            "courses": []
+        }
+    ],
+    "skills": [
+        {
+            "name": "Web Development",
+            "level": "",
+            "keywords": [
+                "HTML",
+                "CSS",
+                "Javascript"
+            ]
+        },
+        {
+            "name": "Compression",
+            "level": "",
+            "keywords": [
+                "Mpeg",
+                "MP4",
+                "GIF"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Miss Direction",
+            "description": "",
+            "highlights": [
+                "Won award at AIHacks 2016",
+                "Built by all women team of newbie programmers"
+            ],
+            "keywords": [
+                "GoogleMaps",
+                "Chrome Extension",
+                "Javascript"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "url": "",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        }
+    ],
+    "meta": {
+        "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/sample.resume.json",
+        "version": "v1.0.0",
+        "lastModified": "2017-12-24T15:53:00"
+    }
+}
