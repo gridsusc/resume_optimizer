@@ -1,0 +1,38 @@
+{
+  "basics": {
+    "summary": "Results-driven data scientist with over seven years of experience in data mining, mathematics, and statistical analysis, skilled in delivering actionable insights and uncovering hidden opportunities through data interpretation and cleaning."
+  },
+  "work": [
+    {
+      "highlights": [
+        "Serve as lead data strategist to identify and integrate new datasets that can be leveraged through our product capabilities, collaborating closely with the engineering team in the development of data products",
+        "Execute analytical experiments to solve problems across various domains, utilizing innovative statistical models for data analysis"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Data Science",
+      "keywords": [
+        "data mining",
+        "mathematics",
+        "statistical analysis",
+        "pattern recognition",
+        "predictive modeling",
+        "Excel",
+        "PowerPoint",
+        "Tableau",
+        "SQL",
+        "Python"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "highlights": [
+        "Won award at AIHacks 2016 for innovative data solutions",
+        "Developed a project as part of an all-women team of novice programmers, showcasing collaboration and creativity in data science"
+      ]
+    }
+  ]
+}
