@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "summary": "Data scientist with a background in applied information theory and optimization. Experienced in developing algorithms and analyzing data to drive insights. Strong mathematical and statistical expertise with a creative mindset. Passionate about exploring new technologies and solving complex problems."
+  },
+  "work": [
+    {
+      "highlights": [
+        "Developed algorithm for copyright infringement detection in music industry",
+        "Won Techcrunch Disrupt competition with innovative solutions",
+        "Optimized algorithm achieving world record for Weisman Scores"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Data Science",
+      "keywords": [
+        "Data Mining",
+        "Statistical Analysis",
+        "Pattern Recognition",
+        "Predictive Modeling",
+        "Excel",
+        "PowerPoint",
+        "Tableau",
+        "SQL",
+        "Python",
+        "Java"
+      ]
+    },
+    {
+      "name": "Web Development",
+      "keywords": [
+        "HTML",
+        "CSS",
+        "Javascript"
+      ]
+    },
+    {
+      "name": "Compression",
+      "keywords": [
+        "Mpeg",
+        "MP4",
+        "GIF"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Miss Direction",
+      "highlights": [
+        "Award-winning project at AIHacks 2016",
+        "Developed by diverse team of programmers",
+        "Utilized GoogleMaps, Chrome Extension, and Javascript"
+      ]
+    }
+  ]
+}

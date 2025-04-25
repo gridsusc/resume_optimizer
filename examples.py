@@ -2,7 +2,6 @@
 RESUME_EXAMPLES = [
     {
         "input": """
-RAW RESUME:
 "work": [
   {
     "highlights": [
@@ -13,6 +12,7 @@ RAW RESUME:
   }
 ]
 """,
+
         "output": """
 "work": [
   {
@@ -23,30 +23,29 @@ RAW RESUME:
     ]
   }
 ]
-"""
-    }
+"""},
+
+  {
+    "input": """
+      "work": [
+        {
+          "highlights": [
+           "I messed around with some Twitter data for a research assistant gig — used tweepy to pull tweets and tried to do some basic sentiment stuff",
+            "My advisor wanted to see if we could find anything about public opinion shifts during a product launch",
+            "I didn’t know much NLP but figured out how to use NLTK and TextBlob after watching some YouTube videos"
+          ]
+        }
+      ]""",
+    "output": """
+      "work": [
+        {
+          "highlights": [
+            "Collected and analyzed Twitter data using Tweepy and NLP libraries (NLTK, TextBlob) to study sentiment around product launches",
+            "Performed sentiment analysis on thousands of tweets to detect public opinion shifts during a high-profile event",
+            "Delivered insights that contributed to a research paper on real-time consumer behavior tracking via social media"
+          ]
+        }
+      ]
+    """
+  }
 ]
-#  {
-#    "input": {
-#      "work": [
-#        {
-#          "highlights": [
-#            "I messed around with some Twitter data for a research assistant gig — used tweepy to pull tweets and tried to do some basic sentiment stuff",
-#            "My advisor wanted to see if we could find anything about public opinion shifts during a product launch",
-#            "I didn’t know much NLP but figured out how to use NLTK and TextBlob after watching some YouTube videos"
-#          ]
-#        }
-#      ]
-#    },
-#    "output": {
-#      "work": [
-#        {
-#          "highlights": [
-#            "Collected and analyzed Twitter data using Tweepy and NLP libraries (NLTK, TextBlob) to study sentiment around product launches",
-#            "Performed sentiment analysis on thousands of tweets to detect public opinion shifts during a high-profile event",
-#            "Delivered insights that contributed to a research paper on real-time consumer behavior tracking via social media"
-#          ]
-#        }
-#      ]
-#    }
-#  }
