@@ -3,9 +3,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
 from langchain_openai import ChatOpenAI
 
-
-from data.examples import RESUME_EXAMPLES
-
 # Load resume (str)
 def load_raw_resume(path: str) -> str:
     with open(path, 'r') as file:
