@@ -6,9 +6,13 @@ import json
 # Assume these two functions are defined in another file you import
 from convert_pdf_to_json import convert_pdf_to_json
 from convert_json_to_pdf import convert_json_to_pdf
+from template_retrival import set_chroma_db, get_related_template
+from finetune import optimize_resume
+from parse_resume import extract_resume, update_resume
+from data.resume_templates import RESUME_TEMPLATES
 
 st.title("Resume PDF ⇄ JSON Converter")
-
+chroma_db=set_chroma_db(RESUME_TEMPLATES)
 openai_key = st.text_input("Enter your OpenAI API Key", type="password")
 
 uploaded_pdf = st.file_uploader("Upload a resume PDF", type="pdf")
@@ -21,6 +25,11 @@ if uploaded_pdf and openai_key:
             f.write(uploaded_pdf.read())
 
         st.success("PDF uploaded successfully.")
+        
+        job_description= st.text_area("Enter Job Description", "Need a data scientist with experience in Python, SQL, and machine learning.")
+
+        # Retrieve related templates
+        related_templates = get_related_template(chroma_db,jd)
 
         # Convert to JSON
         try:
@@ -32,8 +41,12 @@ if uploaded_pdf and openai_key:
             with open(json_path, "w") as f:
                 json.dump(resume_json, f, indent=2)
 
-            st.success("Converted to JSON.")
-
+            st.success("Converted PDF to JSON.")
+            
+            extract_resume(resume_json) 
+            optimize_resume("resume-prompt.json", related_templates, job_description, "optimized_resume.json")
+            
+            update_resume("optimized_resume.json", "resume.json")
             # Convert back to PDF
             pdf_path = convert_json_to_pdf(resume_json)
             with open(pdf_path, "rb") as f:
@@ -41,16 +54,3 @@ if uploaded_pdf and openai_key:
 
         except Exception as e:
             st.error(f"Something went wrong: {e}")
-# import streamlit as st
-# import json
-# from convert_json_to_pdf import convert_json_to_pdf
-
-# st.title("Resume PDF Generator")
-
-# uploaded_file = st.file_uploader("Upload your resume.json", type=["json"])
-# if uploaded_file:
-#     resume_json = json.load(uploaded_file)
-#     pdf_path = convert_json_to_pdf(resume_json)
-#     with open(pdf_path, "rb") as f:
-#         st.download_button("Download PDF", f, "resume.pdf", "application/pdf")
-
