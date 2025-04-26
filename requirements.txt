@@ -13,3 +13,4 @@ pdfplumber
 openai
 langchain_openai
 sentence-transformers
+chromadb
