@@ -13,5 +13,6 @@ pdfplumber
 openai
 langchain_openai
 sentence-transformers
+torch
 chromadb
 pysqlite3-binary
