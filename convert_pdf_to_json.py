@@ -1,104 +1,104 @@
-import json
-import re
-import pdfplumber
-import os
-from typing import Dict
-from langchain_community.chat_models import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
+# import json
+# import re
+# import pdfplumber
+# import os
+# from typing import Dict
+# from langchain_community.chat_models import ChatOpenAI
+# from langchain_core.prompts import ChatPromptTemplate
+# from langchain_core.runnables import RunnablePassthrough
+# from langchain_core.output_parsers import StrOutputParser
 
-basics_schema = '''{
-    "name": "",
-    "label": "",
-    "image": "",
-    "email": "",
-    "phone": "",
-    "url": "",
-    "summary": "",
-    "location": {
-        "address": "",
-        "postalCode": "",
-        "city": "",
-        "countryCode": "",
-        "region": ""
-    },
-    "profiles": [
-        {
-            "network": "",
-            "username": "",
-            "url": ""
-        }
-    ]
-}'''
+# basics_schema = '''{
+#     "name": "",
+#     "label": "",
+#     "image": "",
+#     "email": "",
+#     "phone": "",
+#     "url": "",
+#     "summary": "",
+#     "location": {
+#         "address": "",
+#         "postalCode": "",
+#         "city": "",
+#         "countryCode": "",
+#         "region": ""
+#     },
+#     "profiles": [
+#         {
+#             "network": "",
+#             "username": "",
+#             "url": ""
+#         }
+#     ]
+# }'''
 
-work_schema = '''[
-    {
-        "name": "",
-        "location": "",
-        "description": "",
-        "position": "",
-        "url": "",
-        "startDate": "",
-        "endDate": "",
-        "summary": "",
-        "highlights": []
-    }
-]'''
+# work_schema = '''[
+#     {
+#         "name": "",
+#         "location": "",
+#         "description": "",
+#         "position": "",
+#         "url": "",
+#         "startDate": "",
+#         "endDate": "",
+#         "summary": "",
+#         "highlights": []
+#     }
+# ]'''
 
-education_schema = '''[
-    {
-        "institution": "",
-        "url": "",
-        "area": "",
-        "studyType": "",
-        "startDate": "",
-        "endDate": "",
-        "score": "",
-        "courses": []
-    }
-]'''
+# education_schema = '''[
+#     {
+#         "institution": "",
+#         "url": "",
+#         "area": "",
+#         "studyType": "",
+#         "startDate": "",
+#         "endDate": "",
+#         "score": "",
+#         "courses": []
+#     }
+# ]'''
 
-skills_schema = '''[
-    {
-        "name": "",
-        "level": "",
-        "keywords": []
-    }
-]'''
+# skills_schema = '''[
+#     {
+#         "name": "",
+#         "level": "",
+#         "keywords": []
+#     }
+# ]'''
 
-projects_schema = '''[
-    {
-        "name": "",
-        "description": "",
-        "highlights": [],
-        "keywords": [],
-        "startDate": "",
-        "endDate": "",
-        "url": "",
-        "roles": [],
-        "entity": "",
-        "type": ""
-    }
-]'''
+# projects_schema = '''[
+#     {
+#         "name": "",
+#         "description": "",
+#         "highlights": [],
+#         "keywords": [],
+#         "startDate": "",
+#         "endDate": "",
+#         "url": "",
+#         "roles": [],
+#         "entity": "",
+#         "type": ""
+#     }
+# ]'''
 
-def extract_json_object(response: str) -> str:
-    """
-    Extracts the JSON substring from the LLM response.
-    """
-    match = re.search(r'(\{.*\})', response, re.DOTALL)
-    if match:
-        return match.group(1)
-    return response
+# def extract_json_object(response: str) -> str:
+#     """
+#     Extracts the JSON substring from the LLM response.
+#     """
+#     match = re.search(r'(\{.*\})', response, re.DOTALL)
+#     if match:
+#         return match.group(1)
+#     return response
 
-def extract_json_array(response: str) -> str:
-    """
-    Extracts the JSON array substring from the LLM response.
-    """
-    match = re.search(r'(\[.*\])', response, re.DOTALL)
-    if match:
-        return match.group(1)
-    return response
+# def extract_json_array(response: str) -> str:
+#     """
+#     Extracts the JSON array substring from the LLM response.
+#     """
+#     match = re.search(r'(\[.*\])', response, re.DOTALL)
+#     if match:
+#         return match.group(1)
+#     return response
 
 # def convert_pdf_to_json(pdf_filepath: str, openai_key: str) -> Dict:
 #     pdf_text = ''
@@ -161,10 +161,26 @@ def extract_json_array(response: str) -> str:
 #         }
 #     }
 
-    # return resume_json
+#     return resume_json
 
-def convert_pdf_to_json(pdf_filepath: str, openai_key: str) -> Dict:
-    import time
+# if __name__ == '__main__':
+#     from getpass import getpass
+#     # openai_key = getpass("OpenAI Key: ")
+#     pdf_path = 'data/Richard Hendriks.pdf'
+
+#     payload = convert_pdf_to_json(pdf_path, openai_key)
+#     print(json.dumps(payload, indent=4))
+
+
+import pdfplumber
+from langchain_community.chat_models import ChatOpenAI
+from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import ChatPromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from resume_schema import Resume
+import os
+
+def convert_pdf_to_json(pdf_filepath: str, openai_key: str) -> dict:
     pdf_text = ''
     with pdfplumber.open(pdf_filepath) as pdf:
         for page in pdf.pages:
@@ -173,54 +189,31 @@ def convert_pdf_to_json(pdf_filepath: str, openai_key: str) -> Dict:
                 pdf_text += page_text + '\n'
 
     os.environ["OPENAI_API_KEY"] = openai_key
-    llm = ChatOpenAI(temperature=0, model="gpt-4o") 
+    llm = ChatOpenAI(temperature=0, model="gpt-4o")
 
-    full_schema = {
-        "basics": json.loads(basics_schema),
-        "work": json.loads(work_schema),
-        "education": json.loads(education_schema),
-        "skills": json.loads(skills_schema),
-        "projects": json.loads(projects_schema)
-    }
+    parser = PydanticOutputParser(pydantic_object=Resume)
 
-    conversion_prompt = (
-        "Extract the following sections from the given text and strictly fill them according to their schemas. "
-        "If a field is missing, leave it as an empty string or empty list []. "
-        "Return a SINGLE combined JSON object containing all sections exactly like this example: "
-        "{'basics': {...}, 'work': [...], 'education': [...], 'skills': [...], 'projects': [...]} "
-        "DO NOT add any extra comments or explanation. Only pure JSON.\n\n"
-        "### Schemas:\n{schema}\n"
-        "### Extracted Resume Text:\n{text}"
-    )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are a resume parser. Extract the resume information from the text into structured JSON format."),
+        ("human", "{text}\n\n{format_instructions}")
+    ])
 
-    conversion_chain = (
-        {"text": RunnablePassthrough(), "schema": RunnablePassthrough()}
-        | ChatPromptTemplate.from_template(conversion_prompt)
+    chain = (
+        {
+            "text": RunnablePassthrough(),
+            "format_instructions": RunnablePassthrough()  # dynamically inject parser format
+        }
+        | prompt
         | llm
-        | StrOutputParser()
+        | parser
     )
 
-    # One single request now!
-    combined_json_response = conversion_chain.invoke({
+    resume_obj = chain.invoke({
         "text": pdf_text,
-        "schema": json.dumps(full_schema, indent=2)
+        "format_instructions": parser.get_format_instructions()
     })
 
-    # Clean and parse
-    resume_json_data = json.loads(extract_json_object(combined_json_response))
-
-    # Add meta manually
-    resume_json = {
-        "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
-        **resume_json_data,
-        "meta": {
-            "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/sample.resume.json",
-            "version": "v1.0.0",
-            "lastModified": "2017-12-24T15:53:00"
-        }
-    }
-
-    return resume_json
+    return resume_obj.dict()
 
 
 if __name__ == '__main__':
@@ -228,5 +221,5 @@ if __name__ == '__main__':
     openai_key = getpass("OpenAI Key: ")
     pdf_path = 'data/Richard Hendriks.pdf'
 
-    payload = convert_pdf_to_json(pdf_path, openai_key)
-    print(json.dumps(payload, indent=4))
+    resume_json = convert_pdf_to_json(pdf_path, openai_key)
+    print(json.dumps(resume_json, indent=2))
