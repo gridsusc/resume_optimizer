@@ -8,3 +8,4 @@ Flask
 langchain
 streamlit
 langchain-community
+nodejs-bin
