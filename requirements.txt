@@ -11,3 +11,4 @@ weasyprint
 jinja2
 pdfplumber
 openai
+langchain_openai
