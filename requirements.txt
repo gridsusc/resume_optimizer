@@ -9,3 +9,4 @@ langchain
 streamlit
 langchain-community
 nodejs-bin
+weasyprint
