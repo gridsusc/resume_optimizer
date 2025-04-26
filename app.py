@@ -8,7 +8,7 @@ from convert_pdf_to_json import convert_pdf_to_json
 from convert_json_to_pdf import convert_json_to_pdf
 from template_retrival import set_chroma_db, get_related_template
 from finetune import optimize_resume
-from parse_resume import extract_resume, update_resume
+from parse_resume import extract_relevant_json, update_relevant_json
 from data.resume_templates import RESUME_TEMPLATES
 
 st.title("Resume PDF ⇄ JSON Converter")
@@ -29,7 +29,7 @@ if uploaded_pdf and openai_key:
         job_description= st.text_area("Enter Job Description", "Need a data scientist with experience in Python, SQL, and machine learning.")
 
         # Retrieve related templates
-        related_templates = get_related_template(chroma_db,jd)
+        related_templates = get_related_template(chroma_db,job_description)
 
         # Convert to JSON
         try:
@@ -43,10 +43,10 @@ if uploaded_pdf and openai_key:
 
             st.success("Converted PDF to JSON.")
             
-            extract_resume(resume_json) 
+            extract_relevant_json(resume_json) 
             optimize_resume("resume-prompt.json", related_templates, job_description, "optimized_resume.json")
             
-            update_resume("optimized_resume.json", "resume.json")
+            update_relevant_json("optimized_resume.json", "resume.json")
             # Convert back to PDF
             pdf_path = convert_json_to_pdf(resume_json)
             with open(pdf_path, "rb") as f:

@@ -1,5 +1,5 @@
 import json
-def extract_resume(full_resume: dict):
+def extract_relevant_json(full_resume: dict):
     extracted = {
         "$schema": full_resume.get("$schema", ""),
         "basics": {
@@ -43,7 +43,7 @@ def extract_resume(full_resume: dict):
     
 import copy
 
-def update_resume(prompt_path,resume_path):
+def update_relevant_json(prompt_path,resume_path):
     try:
         # Load both files
         with open(resume_path, 'r') as f:
