@@ -1,9 +1,8 @@
 import json
 import tempfile
-import subprocess
 from pathlib import Path
 from weasyprint import HTML
-from nodejs import npx, npm
+from nodejs import npm, npx
 
 
 def convert_json_to_pdf(json_data: dict, theme='jsonresume-theme-onepage-plus') -> Path:
@@ -16,10 +15,10 @@ def convert_json_to_pdf(json_data: dict, theme='jsonresume-theme-onepage-plus') 
         with open(resume_json, 'w') as f:
             json.dump(json_data, f, indent=2)
 
-        # Install the specified theme locally
-        subprocess.run(['npm', 'install', theme], cwd=tmp_path, check=True)
+        # ✅ Install the specified theme locally using nodejs-bin
+        npm.call(['install', theme], cwd=tmp_path)
 
-        # Use resumed to generate HTML from JSON
+        # ✅ Use resumed to generate HTML from JSON using npx
         npx.call([
             'resumed',
             'render',
