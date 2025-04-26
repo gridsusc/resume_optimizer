@@ -10,3 +10,4 @@ langchain-community
 weasyprint
 jinja2
 pdfplumber
+openai
