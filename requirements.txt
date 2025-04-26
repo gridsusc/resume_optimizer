@@ -4,8 +4,15 @@ idna==3.10
 numpy==2.0.2
 requests==2.32.3
 urllib3==2.3.0
-Flask
 langchain
 streamlit
 langchain-community
-nodejs-bin
+weasyprint
+jinja2
+pdfplumber
+openai
+langchain_openai
+sentence-transformers
+torch
+chromadb
+pysqlite3-binary
