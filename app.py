@@ -41,8 +41,7 @@ if uploaded_pdf and openai_key:
             resume_json = convert_pdf_to_json(pdf_path, openai_key)
 
             # Save JSON to file
-            json_path = os.path.join(tmpdir, "resume.json")
-            with open(json_path, "w") as f:
+            with open("resume.json", "w") as f:
                 json.dump(resume_json, f, indent=2)
 
             st.success("Converted PDF to JSON.")
