@@ -1,0 +1,177 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Alex Kim",
+    "label": "Data Scientist",
+    "image": "",
+    "email": "alex.kim@example.com",
+    "phone": "(415) 555-1234",
+    "url": "http://alexkimdatascience.example.com",
+    "summary": "Data scientist passionate about turning messy data into actionable insights. Experienced in building machine learning models, natural language processing pipelines, and scalable cloud-based solutions. Always curious, always learning.",
+    "location": {
+      "address": "500 Market St",
+      "postalCode": "CA 94105",
+      "city": "San Francisco",
+      "countryCode": "US",
+      "region": "California"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "alexkimds",
+        "url": "https://linkedin.com/in/alexkimds"
+      },
+      {
+        "network": "GitHub",
+        "username": "alexkimds",
+        "url": "https://github.com/alexkimds"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "DataNest Labs",
+      "location": "San Francisco, CA",
+      "description": "AI and data-driven solutions company",
+      "position": "Senior Data Scientist",
+      "url": "http://datanest.example.com",
+      "startDate": "2021-02-01",
+      "endDate": "Present",
+      "summary": "Leading data science projects in predictive modeling and NLP, deploying models into production on AWS.",
+      "highlights": [
+        "Developed a customer churn prediction model with 85% accuracy, reducing client attrition by 20%",
+        "Built an NLP pipeline to automatically categorize support tickets, improving triage efficiency by 30%",
+        "Mentored 3 junior data scientists on deep learning and MLOps best practices"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "DataKind",
+      "position": "Data Science Volunteer",
+      "url": "http://datakind.org/",
+      "startDate": "2020-01-01",
+      "endDate": "2020-12-01",
+      "summary": "Worked on projects applying data science for social good.",
+      "highlights": [
+        "Built dashboards to help a non-profit optimize donation campaigns"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "url": "https://www.berkeley.edu/",
+      "area": "Data Science",
+      "studyType": "Master",
+      "startDate": "2018-08-01",
+      "endDate": "2020-05-01",
+      "score": "3.9",
+      "courses": [
+        "CS189 - Machine Learning",
+        "STAT154 - Modern Statistical Prediction"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Best Data Science Project",
+      "date": "2020-05-01",
+      "awarder": "UC Berkeley",
+      "summary": "Awarded for a capstone project predicting wildfire risks using satellite data."
+    }
+  ],
+  "publications": [
+    {
+      "name": "Understanding Bias in Machine Learning Models",
+      "publisher": "Towards Data Science",
+      "releaseDate": "2021-09-01",
+      "url": "https://towardsdatascience.com/understanding-bias-in-ml",
+      "summary": "Explores strategies for detecting and mitigating bias in ML systems."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Machine Learning",
+      "level": "Advanced",
+      "keywords": [
+        "scikit-learn",
+        "TensorFlow",
+        "PyTorch"
+      ]
+    },
+    {
+      "name": "Data Engineering",
+      "level": "Intermediate",
+      "keywords": [
+        "SQL",
+        "Airflow",
+        "AWS S3"
+      ]
+    },
+    {
+      "name": "NLP",
+      "level": "Advanced",
+      "keywords": [
+        "spaCy",
+        "Transformers",
+        "BERT"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "Korean",
+      "fluency": "Professional working proficiency"
+    }
+  ],
+  "interests": [
+    {
+      "name": "AI Ethics",
+      "keywords": [
+        "Fairness",
+        "Accountability",
+        "Transparency"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jamie Chen",
+      "reference": "Alex is an outstanding data scientist with an amazing ability to balance technical depth and real-world application."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Disaster Response Classifier",
+      "description": "A machine learning system to classify disaster-related tweets for emergency response.",
+      "highlights": [
+        "Achieved 92% F1-score",
+        "Deployed model as a REST API using Flask and AWS Elastic Beanstalk"
+      ],
+      "keywords": [
+        "NLP",
+        "AWS",
+        "Flask"
+      ],
+      "startDate": "2019-09-01",
+      "endDate": "2019-12-01",
+      "url": "http://disasterclassifier.example.com",
+      "roles": [
+        "Lead Developer",
+        "ML Engineer"
+      ],
+      "entity": "Personal Project",
+      "type": "application"
+    }
+  ],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2025-04-25T00:00:00"
+  }
+}
