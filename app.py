@@ -1,3 +1,6 @@
+import sys
+import pysqlite3
+sys.modules["sqlite3"] = pysqlite3
 import streamlit as st
 import os
 import tempfile
@@ -10,6 +13,7 @@ from template_retrival import set_chroma_db, get_related_template
 from finetune import optimize_resume
 from parse_resume import extract_relevant_json, update_relevant_json
 from data.resume_templates import RESUME_TEMPLATES
+
 
 st.title("Resume PDF ⇄ JSON Converter")
 chroma_db=set_chroma_db(RESUME_TEMPLATES)
