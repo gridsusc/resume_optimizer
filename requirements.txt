@@ -8,5 +8,6 @@ Flask
 langchain
 streamlit
 langchain-community
-nodejs-bin
+nodejs-bin[cmd]
 weasyprint
+jinja2

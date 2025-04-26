@@ -1,39 +1,30 @@
 import json
-import tempfile
 from pathlib import Path
 from weasyprint import HTML
-from nodejs import npm, npx
+from jinja2 import Environment, FileSystemLoader
+import tempfile
 
+def convert_json_to_pdf(json_data: dict) -> Path:
+    # Setup Jinja environment
+    env = Environment(loader=FileSystemLoader('.'))
+    template = env.get_template("resume_template.html")
 
-def convert_json_to_pdf(json_data: dict, theme='jsonresume-theme-onepage-plus') -> Path:
-    # Create a temporary working directory
+    # Render HTML with resume data
+    html_content = template.render(**json_data)
+
+    # Save to a temporary HTML file
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = Path(tmpdir)
+        html_file = tmp_path / "resume.html"
+        pdf_file = tmp_path / "resume.pdf"
 
-        # Save the resume JSON
-        resume_json = tmp_path / 'resume.json'
-        with open(resume_json, 'w') as f:
-            json.dump(json_data, f, indent=2)
+        with open(html_file, "w", encoding="utf-8") as f:
+            f.write(html_content)
 
-        # ✅ Install the specified theme locally using nodejs-bin
-        npm.call(['install', theme], cwd=tmp_path)
+        # Generate PDF using WeasyPrint
+        HTML(str(html_file)).write_pdf(str(pdf_file))
 
-        # ✅ Use resumed to generate HTML from JSON using npx
-        npx.call([
-            'resumed',
-            'render',
-            '--resume', str(resume_json),
-            '--theme', theme,
-            '--out', 'resume.html'
-        ], cwd=tmp_path)
-
-        # Convert HTML to PDF using WeasyPrint
-        html_file = tmp_path / 'resume.html'
-        pdf_file = tmp_path / 'resume.pdf'
-        HTML(filename=str(html_file)).write_pdf(str(pdf_file))
-
-        # Move the PDF to a permanent location
-        final_pdf = Path.cwd() / 'resume.pdf'
+        # Move to a permanent location
+        final_pdf = Path.cwd() / "resume.pdf"
         final_pdf.write_bytes(pdf_file.read_bytes())
-
         return final_pdf

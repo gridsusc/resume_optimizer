@@ -50,10 +50,10 @@
 #         except Exception as e:
 #             st.error(f"Something went wrong: {e}")
 import streamlit as st
-from convert_json_to_pdf import convert_json_to_pdf
 import json
+from convert_json_to_pdf import convert_json_to_pdf
 
-st.title("Resume to PDF")
+st.title("Resume PDF Generator")
 
 uploaded_file = st.file_uploader("Upload your resume.json", type=["json"])
 if uploaded_file:
@@ -61,3 +61,4 @@ if uploaded_file:
     pdf_path = convert_json_to_pdf(resume_json)
     with open(pdf_path, "rb") as f:
         st.download_button("Download PDF", f, "resume.pdf", "application/pdf")
+
